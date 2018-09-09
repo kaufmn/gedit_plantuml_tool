@@ -1,0 +1,13 @@
+#!/bin/sh
+# [Gedit Tool]
+# Input=document
+# Output=output-panel
+# Shortcut=<Primary><Shift>q
+# Save-files=document
+# Applicability=all
+# Name=PlantUML
+
+tfileo=$(mktemp /tmp/foo.XXXXXXXXX.png)
+cat "$GEDIT_CURRENT_DOCUMENT_NAME" | plantuml.sh -p > ${tfileo}
+eog /dev/stdin < ${tfileo}
+rm ${tfileo}
